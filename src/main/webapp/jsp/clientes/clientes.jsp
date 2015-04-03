@@ -82,7 +82,7 @@
 				<s:textfield theme="simple" name="empresab" id="empresab"></s:textfield>
 			</div>
 			<div style="float:left; margin-left:30px">
-				<label for="contactob">Contacto</label>
+				<label for="contactob">Contactos</label>
 				<s:textfield theme="simple" name="contactob" id="contactob"></s:textfield>
 			</div>
 			<div style="float:left; margin-left:30px">
