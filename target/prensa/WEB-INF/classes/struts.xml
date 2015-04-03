@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+
+	<package name="inicio" namespace="/" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>	
+		
+		<action name="">
+		    <result type="redirect">inicio.action</result>
+		</action>
+	    <action name="inicio" class="inicioAction" method="inicio">
+	        <result name="success" type="redirect">listadoPrensa.action</result>
+	    </action>
+	    
+	    <action name="listadoPrensa" class="clientesAction" method="listadoCliente">
+	        <result name="success" type="tiles">clientes.tiles</result>
+	    </action>
+	    	    
+	    <action name="*Prensa" class="clientesAction" method="{1}Cliente">
+	        <result name="success" type="redirect">listadoPrensa</result>
+	        <result name="input" type="tiles">clientes.tiles</result>
+	    </action>
+	    	    
+	    <action name="borraContacto" class="clientesAction" method="borraContacto">
+	        <result name="input" type="tiles">clientes.tiles</result>
+	    </action>
+	    	    
+	    <action name="listadoCategorias" class="categoriasAction" method="listadoCategorias">
+	        <result name="success" type="tiles">categorias.tiles</result>
+	    </action>
+	    	    
+	    <action name="*Categoria" class="categoriasAction" method="{1}Categoria">
+	        <result name="success" type="redirect">listadoCategorias</result>
+	        <result name="input" type="tiles">categorias.tiles</result>
+	    </action>
+	    	    
+	    <action name="*Listados" class="listadosAction" method="{1}Listados">
+	        <result name="success" type="tiles">listados.tiles</result>
+	    </action>
+	    
+	    <action name="*Seguridad" class="copiaSeguridadAction" method="{1}Seguridad">
+	        <result name="success" type="tiles">seguridad.tiles</result>
+	    </action>
+	    	    
+	</package>
+	
+</struts>

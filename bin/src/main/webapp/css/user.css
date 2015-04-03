@@ -1,0 +1,220 @@
+#rotation { position: relative; height: 260px; width: 100%; } 
+#rotation a { position: absolute; width: 100%; text-align: center; }
+
+.acceso_admin{
+	float:right;
+	margin-top:25px;
+	margin-right:10px;
+	background-color: #ccc;
+	border: 1px solid #777;
+	padding:3px;
+}
+
+.acceso_admin a{
+	font-size: 12px;
+}
+
+#cuerpo h5 {
+	text-transform: uppercase;
+	border-bottom: 1px solid #000;
+	width:100%;
+}
+
+fieldset {
+	border: 1px solid #bbb;
+	padding:8px;
+}
+
+#resultadosBuscador h6 {
+	font-size: 1em;
+	border-bottom: 1px solid #000;
+	width:100%;
+}
+
+.fondoRojo{
+	background-color: #BB5555!important;
+}
+
+.leyenda{
+	color: #777777;
+}
+
+.leyendaSeleccionada{
+	color:#333333;
+	font-weight: bold;
+}
+
+.oculto{
+	display: none;
+}
+
+#capa1{
+	float:left;
+	width:40%;
+}
+
+#capa2, #capa4{
+	float:right;
+	width:59%;
+	border:1px solid grey;
+	background-color:#ddd;
+	padding:3px;
+	margin-bottom: 10px;
+}
+
+.celdacontacto120{
+	float:left;
+	width:120px;
+}
+
+.celdacontacto100{
+	float:left;
+	width:100px;
+}
+
+.celdacontacto160{
+	float:left;
+	width:160px;
+}
+
+.celdainput{
+	float:left;
+}
+
+.input1{
+	width:125px;
+}
+
+.input2{
+	width:87px;
+}
+
+.input3{
+	width:174px;
+}
+
+.input4{
+	width:85px;
+}
+
+textarea{
+	font-family: Arial, Helvetica, Verdana, Sans-serif;
+}
+
+table.elmtos
+{
+	background-color: #FFFFFF;
+	border: #558 1px solid ;
+	width:100%;
+}
+
+table.elmtos2{
+	background-color: #FFFFFF;
+	border: #99A 1px solid ;
+	width:100%;
+}
+
+th
+{
+	background-color: #AF2323;
+	color: white;
+	margin:4px;
+	text-align:left;
+	padding:4px	
+}
+th>a, th>a:hover{
+	color: white;
+	text-decoration: underline;
+}
+
+td.res
+{
+	background-color: #e2cfcf;
+	margin:4px;
+	padding:4px	
+}
+td.res2
+{
+	background-color: #efdfdf;
+	margin:4px;
+	padding:4px	
+}
+
+td.cc1{
+	background-color: #cfbfbf;
+	margin:4px;
+	padding:4px	
+}
+td.cc2{
+	background-color: #eaeaea;
+	margin:4px;
+	padding:4px	
+}
+
+.addcontacto {
+	padding:2px 20px 2px 20px;
+	background-color:#f4f4f4;
+	border: 1px solid #999;
+	float:left;
+}
+
+.categoria{
+	padding:2px 20px 2px 20px;
+	background-color:#f4f4f4;
+	border: 1px solid #999;
+	float:left;
+}
+
+.leyenda{
+	color: #777777;
+}
+
+.leyendaSeleccionada{
+	color:#333333;
+	font-weight: bold;
+}
+
+#capa3{
+	display:none;
+}
+
+#showmensaje{
+	min-height:21px;
+	width:953px;
+	margin-bottom:3px;
+}
+
+#spanshowmensaje{
+	border: 1px dotted #aaa;
+	background-color: #ddd;
+	width:100%;
+	color: #af4545;
+	padding-left: 5px;
+	padding-top:2px;
+	padding-bottom:2px;
+	font-weight: bold;
+}
+
+.errorMessage{
+	border: 1px dotted #aaa;
+	background-color: #ddd;
+	color:#af2323!important;
+}
+
+#errores ul{
+	list-style-type: disc;
+	padding-left:30px;
+	margin-left:10px;
+	margin-bottom:15px;
+}
+
+#seleccionaEmails{
+	width:100%;
+	height: 150px;
+	border: 1px solid #ddd;
+}
+
+.enlace{
+	color: grey;
+	text-decoration: underline;
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="es.noletia.clientes.dao.ListadosDAO">
+        
+    <select id="buscaListadosEmails" resultType="java.lang.String" parameterType="java.util.Map">
+		select email from contacto con
+		 left join cliente cli on cli.idcliente=con.idcliente
+		 left join provincia pro on pro.idprovincia=cli.idprovincia
+		 left join cliente_has_categorias chc on cli.idcliente=chc.cliente_idcliente 
+		 left join categorias cat on cat.idcategoria=chc.categorias_idcategoria
+		<where>
+		    email is not null
+		    <if test="empresa != null">
+		        AND upper(cli.empresa) like upper('%${empresa}%')
+		    </if>
+		    <if test="provincia != null">
+		    	AND pro.idprovincia = #{provincia}    
+		    </if>
+		    <if test="categorias != null">
+		        AND cat.idcategoria in (#{categorias})
+		    </if>
+		</where> 
+		group by email;    
+	</select>
+    
+</mapper>

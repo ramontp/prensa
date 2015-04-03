@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="es.noletia.clientes.dao.ClienteCategoriaDAO">
+    
+    <resultMap type="clientecategoria" id="result">
+        <id property="idcliente" column="cliente_idcliente"/>
+        <id property="idcategoria" column="categorias_idcategoria"/>
+    </resultMap>
+    
+    <insert id="alta" parameterType="clientecategoria">
+        insert into cliente_has_categorias(cliente_idcliente, categorias_idcategoria) 
+        values (#{idcliente},#{idcategoria})
+    </insert>
+    
+    <delete id="borra" parameterType="clientecategoria">
+        delete from cliente_has_categorias 
+        where cliente_idcliente=#{idcliente}
+        and categorias_idcategoria=#{idcategoria}
+    </delete>
+    
+    <delete id="borraPorCliente" parameterType="java.lang.Long">
+        delete from cliente_has_categorias 
+        where cliente_idcliente=#{idcliente}
+    </delete>
+    
+    <delete id="borraPorId" parameterType="java.lang.Long">
+        <!-- Esta operación no se utiliza -->
+    </delete>
+    
+    <select id="getElemento" parameterType="clientecategoria" resultMap="result">
+        <!-- Esta operación no se utiliza -->
+    </select>
+    
+    <select id="getElementoPorId" parameterType="java.lang.Long" resultMap="result">
+        <!-- Esta operación no se utiliza -->
+    </select>
+    
+    <select id="getListaElementos" resultMap="result">
+        <!-- Esta operación no se utiliza -->
+    </select>
+    
+    <update id="actualiza" parameterType="clientecategoria">
+        <!-- Esta operación no se utiliza -->
+    </update>
+    
+    <select id="getElementosFiltrados" resultMap="result" parameterType="java.util.Map">
+        <!-- Esta operación no se utiliza -->
+    </select>
+    
+</mapper>
