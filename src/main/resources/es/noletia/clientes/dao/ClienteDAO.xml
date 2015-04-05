@@ -120,7 +120,7 @@
         select <include refid="todoscampos"/> 
         from <include refid="fromcompleto"/> 
         <where> 
-	        <if test="empresa != '' or contacto != ''">
+	        <if test="empresa != '' or contacto != '' or email != ''">
 	            (
 	        	<if test="empresa != null and empresa != ''">
 	        	UPPER(cli.empresa) like UPPER('%${empresa}%')
@@ -130,6 +130,9 @@
 	        	</if>
 	        	<if test="contacto != null and contacto != ''">
 	        	UPPER(con.contacto) like UPPER('%${contacto}%')
+	        	</if>
+	        	<if test="email != null and email != ''">
+		        	UPPER(con.email) like UPPER('%${email}%')
 	        	</if>
 	        	) 
 	        </if>

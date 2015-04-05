@@ -116,7 +116,11 @@
 		<display:column title="Provincia" property="provincia.nombre" class="res"></display:column>
 		<% /*<display:column title="Fecha Última" property="fechault" format="{0,date,dd-MM-yyyy}" class="res"></display:column>
 		<display:column title="Contactado Por" property="contactado" class="res"/>*/ %>
-		<display:column title="Categorias" property="observaciones" class="res" style="width:40%"></display:column>
+		<display:column title="Categorias" class="res" style="width:40%">
+			<c:forEach items="${lista.listacategorias}" var="cat">
+				- ${cat.nombrecategoria} <br/>
+			</c:forEach>
+		</display:column>
 		<display:column class="res" style="width:54px">
 			<c:choose>
 				<c:when test="${fn:length(lista.listacontactos) gt 0}">

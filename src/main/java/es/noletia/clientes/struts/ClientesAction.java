@@ -72,6 +72,7 @@ public class ClientesAction extends ComunAction {
 	// campos del buscador
 	private String empresab;
 	private String contactob;
+	private String emailb;
 	private Boolean muestraBuscador;
 
 	// para mostrar los mensajes
@@ -371,6 +372,7 @@ public class ClientesAction extends ComunAction {
 			Map<String, Object> parametros = new HashMap<String, Object>();
 			parametros.put("empresa", empresab);
 			parametros.put("contacto", contactob);
+			parametros.put("email", emailb);
 			parametros.put("categorias", obtieneListaCategorias(categoriasseleccionadas));
 
 			listaClientes = clientesService.getElementosFiltrados(parametros);
@@ -709,6 +711,14 @@ public class ClientesAction extends ComunAction {
 	 */
 	public void setCategoriasseleccionadas(String categoriasseleccionadas) {
 		this.categoriasseleccionadas = categoriasseleccionadas;
+	}
+
+	public String getEmailb() {
+		return emailb;
+	}
+
+	public void setEmailb(String emailb) {
+		this.emailb = emailb;
 	}
 
 }
