@@ -1,6 +1,7 @@
 /**
  * 
- */
+ * /
+/*
 package es.noletia.clientes.struts;
 
 import org.apache.log4j.Logger;
@@ -34,14 +35,14 @@ import es.noletia.clientes.services.ProvinciasService;
 /**
  * @author ramon
  * 
- */
+ * /
 @Component
 @Scope("prototype")
 @Validations
 public class ClientesAction extends ComunAction {
 	/**
 	 * Logger for this class
-	 */
+	 * /
 	private static final Logger logger = Logger.getLogger(ClientesAction.class);
 
 	private static final long serialVersionUID = 1L;
@@ -93,7 +94,7 @@ public class ClientesAction extends ComunAction {
 	 * resultantes de realizar una búsqueda
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	@SuppressWarnings("unchecked")
 	@SkipValidation
 	public String listadoCliente() {
@@ -147,7 +148,7 @@ public class ClientesAction extends ComunAction {
 	 * 
 	 * @param List
 	 *            <Categoria> listacategoriasseleccionadas
-	 * */
+	 * * /
 	private void estableceCategoriasSeleccionadas(
 			List<Categoria> listacategoriasseleccionadas) {
 
@@ -164,7 +165,7 @@ public class ClientesAction extends ComunAction {
 	 * Método que permite dar de alta un cliente
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	public String altaCliente() {
 		try {
 			Cliente cliente = new Cliente();
@@ -199,7 +200,7 @@ public class ClientesAction extends ComunAction {
 	 * @param catsel
 	 *            , cadena con la lista de categorias seleccionadas
 	 * @return List<Categoria>, lista de categorias seleccionadas
-	 * */
+	 * * /
 	private List<Categoria> obtieneListaCategorias(String catsel) {
 		List<Categoria> listacategorias = new ArrayList<Categoria>();
 		String[] arr1 = catsel.split("#");
@@ -221,7 +222,7 @@ public class ClientesAction extends ComunAction {
 	 * @param contactos2
 	 *            , cadena con los datos de los contactos encadenados
 	 * @return List<Contacto>, lista de contactos
-	 * */
+	 * * /
 	private List<Contacto> obtieneListaContactos(String contactos2) {
 		List<Contacto> listaContactos = new ArrayList<Contacto>();
 		if (!contactos2.equals("")) {
@@ -260,7 +261,7 @@ public class ClientesAction extends ComunAction {
 	 * @param string
 	 *            , cadena con los corchetes
 	 * @return String, cadena sin los corchetes
-	 * */
+	 * * /
 	private String eliminacorchetes(String string) {
 		return string.substring(1, string.length() - 1);
 	}
@@ -269,7 +270,7 @@ public class ClientesAction extends ComunAction {
 	 * Método para borrar un cliente
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	@SkipValidation
 	public String borraCliente() {
 		try {
@@ -289,7 +290,7 @@ public class ClientesAction extends ComunAction {
 	 * Método para mostrar los datos de un cliente para su edición
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	@SkipValidation
 	public String editaCliente() {
 		try {
@@ -311,7 +312,7 @@ public class ClientesAction extends ComunAction {
 	 * Método para actualizar los datos de un cliente
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	public String actualizaCliente() {
 		try {
 			Cliente cliente = new Cliente();
@@ -342,7 +343,7 @@ public class ClientesAction extends ComunAction {
 	 * Método para borrar un cliente
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	@SkipValidation
 	public String borraContacto() {
 		PrintWriter writer = null;
@@ -365,7 +366,7 @@ public class ClientesAction extends ComunAction {
 	 * Método para buscar un cliente
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	@SkipValidation
 	public String buscaCliente() {
 		try {
@@ -395,7 +396,7 @@ public class ClientesAction extends ComunAction {
 
 	/**
 	 * @return the listaProvincias
-	 */
+	 * /
 	public List<Provincia> getListaProvincias() {
 		return (listaProvincias != null) ? listaProvincias : provinciasService
 				.getListaElementos();
@@ -404,14 +405,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param listaProvincias
 	 *            the listaProvincias to set
-	 */
+	 * /
 	public void setListaProvincias(List<Provincia> listaProvincias) {
 		this.listaProvincias = listaProvincias;
 	}
 
 	/**
 	 * @return the empresa
-	 */
+	 * /
 	public String getEmpresa() {
 		return empresa;
 	}
@@ -419,7 +420,7 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param empresa
 	 *            the empresa to set
-	 */
+	 * /
 	@RequiredStringValidator(message = "El campo 'Medio' no puede estar vacío")
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
@@ -427,7 +428,7 @@ public class ClientesAction extends ComunAction {
 
 	/**
 	 * @return the datosfiscales
-	 */
+	 * /
 	public String getDatosfiscales() {
 		return datosfiscales;
 	}
@@ -435,7 +436,7 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param datosfiscales
 	 *            the datosfiscales to set
-	 */
+	 * /
 	@StringLengthFieldValidator(message = "El campo datos fiscales no puede exceder de 1000 caracteres.", maxLength = "1000")
 	public void setDatosfiscales(String datosfiscales) {
 		this.datosfiscales = datosfiscales;
@@ -443,7 +444,7 @@ public class ClientesAction extends ComunAction {
 
 	/**
 	 * @return the provincia
-	 */
+	 * /
 	public Long getProvincia() {
 		return provincia;
 	}
@@ -451,14 +452,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param provincia
 	 *            the provincia to set
-	 */
+	 * /
 	public void setProvincia(Long provincia) {
 		this.provincia = provincia;
 	}
 
 	/**
 	 * @return the fechault
-	 */
+	 * /
 	public Date getFechault() {
 		return fechault;
 	}
@@ -466,14 +467,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param fechault
 	 *            the fechault to set
-	 */
+	 * /
 	public void setFechault(Date fechault) {
 		this.fechault = fechault;
 	}
 
 	/**
 	 * @return the contactado
-	 */
+	 * /
 	public String getContactado() {
 		return contactado;
 	}
@@ -481,14 +482,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param contactado
 	 *            the contactado to set
-	 */
+	 * /
 	public void setContactado(String contactado) {
 		this.contactado = contactado;
 	}
 
 	/**
 	 * @return the observaciones
-	 */
+	 * /
 	public String getObservaciones() {
 		return observaciones;
 	}
@@ -496,14 +497,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param observaciones
 	 *            the observaciones to set
-	 */
+	 * /
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
 	}
 
 	/**
 	 * @return the clientesService
-	 */
+	 * /
 	public ClientesService getClientesService() {
 		return clientesService;
 	}
@@ -511,14 +512,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param clientesService
 	 *            the clientesService to set
-	 */
+	 * /
 	public void setClientesService(ClientesService clientesService) {
 		this.clientesService = clientesService;
 	}
 
 	/**
 	 * @return the listaClientes
-	 */
+	 * /
 	public List<Cliente> getListaClientes() {
 		return (listaClientes != null) ? listaClientes : clientesService
 				.getListaElementos();
@@ -527,14 +528,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param listaClientes
 	 *            the listaClientes to set
-	 */
+	 * /
 	public void setListaClientes(List<Cliente> listaClientes) {
 		this.listaClientes = listaClientes;
 	}
 
 	/**
 	 * @return the provinciasService
-	 */
+	 * /
 	public ProvinciasService getProvinciasService() {
 		return provinciasService;
 	}
@@ -542,14 +543,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param provinciasService
 	 *            the provinciasService to set
-	 */
+	 * /
 	public void setProvinciasService(ProvinciasService provinciasService) {
 		this.provinciasService = provinciasService;
 	}
 
 	/**
 	 * @return the contactos
-	 */
+	 * /
 	public String getContactos() {
 		return contactos;
 	}
@@ -557,14 +558,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param contactos
 	 *            the contactos to set
-	 */
+	 * /
 	public void setContactos(String contactos) {
 		this.contactos = contactos;
 	}
 
 	/**
 	 * @return the idcliente
-	 */
+	 * /
 	public Long getIdcliente() {
 		return idcliente;
 	}
@@ -572,14 +573,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param idcliente
 	 *            the idcliente to set
-	 */
+	 * /
 	public void setIdcliente(Long idcliente) {
 		this.idcliente = idcliente;
 	}
 
 	/**
 	 * @return the listacontactos
-	 */
+	 * /
 	public List<Contacto> getListacontactos() {
 		return listacontactos;
 	}
@@ -587,14 +588,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param listacontactos
 	 *            the listacontactos to set
-	 */
+	 * /
 	public void setListacontactos(List<Contacto> listacontactos) {
 		this.listacontactos = listacontactos;
 	}
 
 	/**
 	 * @return the idcontacto
-	 */
+	 * /
 	public Long getIdcontacto() {
 		return idcontacto;
 	}
@@ -602,14 +603,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param idcontacto
 	 *            the idcontacto to set
-	 */
+	 * /
 	public void setIdcontacto(Long idcontacto) {
 		this.idcontacto = idcontacto;
 	}
 
 	/**
 	 * @return the empresab
-	 */
+	 * /
 	public String getEmpresab() {
 		return empresab;
 	}
@@ -617,14 +618,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param empresab
 	 *            the empresab to set
-	 */
+	 * /
 	public void setEmpresab(String empresab) {
 		this.empresab = empresab;
 	}
 
 	/**
 	 * @return the contactob
-	 */
+	 * /
 	public String getContactob() {
 		return contactob;
 	}
@@ -632,14 +633,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param contactob
 	 *            the contactob to set
-	 */
+	 * /
 	public void setContactob(String contactob) {
 		this.contactob = contactob;
 	}
 
 	/**
 	 * @return the muestraBuscador
-	 */
+	 * /
 	public Boolean getMuestraBuscador() {
 		return muestraBuscador;
 	}
@@ -647,14 +648,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param muestraBuscador
 	 *            the muestraBuscador to set
-	 */
+	 * /
 	public void setMuestraBuscador(Boolean muestraBuscador) {
 		this.muestraBuscador = muestraBuscador;
 	}
 
 	/**
 	 * @return the mensaje
-	 */
+	 * /
 	public String getMensaje() {
 		return mensaje;
 	}
@@ -662,14 +663,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param mensaje
 	 *            the mensaje to set
-	 */
+	 * /
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
 
 	/**
 	 * @return the listacategorias
-	 */
+	 * /
 	public List<Categoria> getListacategorias() {
 		return (listacategorias != null) ? listacategorias : categoriasService
 				.getListaElementos();
@@ -678,14 +679,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param listacategorias
 	 *            the listacategorias to set
-	 */
+	 * /
 	public void setListacategorias(List<Categoria> listacategorias) {
 		this.listacategorias = listacategorias;
 	}
 
 	/**
 	 * @return the categoriasService
-	 */
+	 * /
 	public CategoriasService getCategoriasService() {
 		return categoriasService;
 	}
@@ -693,14 +694,14 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param categoriasService
 	 *            the categoriasService to set
-	 */
+	 * /
 	public void setCategoriasService(CategoriasService categoriasService) {
 		this.categoriasService = categoriasService;
 	}
 
 	/**
 	 * @return the categoriasseleccionadas
-	 */
+	 * /
 	public String getCategoriasseleccionadas() {
 		return categoriasseleccionadas;
 	}
@@ -708,7 +709,7 @@ public class ClientesAction extends ComunAction {
 	/**
 	 * @param categoriasseleccionadas
 	 *            the categoriasseleccionadas to set
-	 */
+	 * /
 	public void setCategoriasseleccionadas(String categoriasseleccionadas) {
 		this.categoriasseleccionadas = categoriasseleccionadas;
 	}
@@ -722,3 +723,4 @@ public class ClientesAction extends ComunAction {
 	}
 
 }
+*/

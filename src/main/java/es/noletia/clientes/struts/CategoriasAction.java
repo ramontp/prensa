@@ -1,6 +1,7 @@
 /**
  * 
  */
+/*
 package es.noletia.clientes.struts;
 
 import org.apache.log4j.Logger;
@@ -21,14 +22,14 @@ import es.noletia.clientes.services.CategoriasService;
 /**
  * @author ramon
  *
- */
+ * /
 @Component
 @Scope("prototype")
 @Validations
 public class CategoriasAction extends ComunAction {
 	/**
 	 * Logger for this class
-	 */
+	 * /
 	private static final Logger logger = Logger
 		.getLogger(CategoriasAction.class);
 
@@ -46,7 +47,7 @@ public class CategoriasAction extends ComunAction {
 	 * Método de entrada para mostrar el inicio y las categorias a editar
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	@SkipValidation
 	public String listadoCategorias(){
 		if (session.get("categoria")!=null){
@@ -72,7 +73,7 @@ public class CategoriasAction extends ComunAction {
 	 * Método para dar de alta una categoria
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	public String altaCategoria(){
 		try{
 			Categoria cat = new Categoria();
@@ -93,7 +94,7 @@ public class CategoriasAction extends ComunAction {
 	 * Método para borrar una categoria
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	@SkipValidation
 	public String borraCategoria(){
 		try{
@@ -112,7 +113,7 @@ public class CategoriasAction extends ComunAction {
 	 * Método para mostrar los datos de la categoria para su edición
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	@SkipValidation
 	public String editaCategoria(){
 		try{
@@ -130,7 +131,7 @@ public class CategoriasAction extends ComunAction {
 	 * Método que guarda la actualización de los datos de una categoria
 	 * 
 	 * @return Action.SUCCESS
-	 * */
+	 * * /
 	public String actualizaCategoria(){
 		try{
 			Categoria cat = new Categoria();
@@ -150,28 +151,28 @@ public class CategoriasAction extends ComunAction {
 
 	/**
 	 * @return the idcategoria
-	 */
+	 * /
 	public Long getIdcategoria() {
 		return idcategoria;
 	}
 
 	/**
 	 * @param idcategoria the idcategoria to set
-	 */
+	 * /
 	public void setIdcategoria(Long idcategoria) {
 		this.idcategoria = idcategoria;
 	}
 
 	/**
 	 * @return the nombrecategoria
-	 */
+	 * /
 	public String getNombrecategoria() {
 		return nombrecategoria;
 	}
 
 	/**
 	 * @param nombrecategoria the nombrecategoria to set
-	 */
+	 * /
 	@RequiredStringValidator
 	public void setNombrecategoria(String nombrecategoria) {
 		this.nombrecategoria = nombrecategoria;
@@ -179,43 +180,44 @@ public class CategoriasAction extends ComunAction {
 
 	/**
 	 * @return the listaCategorias
-	 */
+	 * /
 	public List<Categoria> getListaCategorias() {
 		return (listaCategorias!=null)?listaCategorias:categoriasService.getListaElementos();
 	}
 
 	/**
 	 * @param listaCategorias the listaCategorias to set
-	 */
+	 * /
 	public void setListaCategorias(List<Categoria> listaCategorias) {
 		this.listaCategorias = listaCategorias;
 	}
 
 	/**
 	 * @return the categoriasService
-	 */
+	 * /
 	public CategoriasService getCategoriasService() {
 		return categoriasService;
 	}
 
 	/**
 	 * @param categoriasService the categoriasService to set
-	 */
+	 * /
 	public void setCategoriasService(CategoriasService categoriasService) {
 		this.categoriasService = categoriasService;
 	}
 
 	/**
 	 * @return the mensaje
-	 */
+	 * /
 	public String getMensaje() {
 		return mensaje;
 	}
 
 	/**
 	 * @param mensaje the mensaje to set
-	 */
+	 * /
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
 }
+*/

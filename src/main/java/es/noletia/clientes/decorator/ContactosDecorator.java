@@ -1,23 +1,24 @@
 /**
  * 
  */
+/*
 package es.noletia.clientes.decorator;
 
 import org.displaytag.decorator.TableDecorator;
 
 import es.noletia.clientes.modelo.Cliente;
 
-/**
+/ *  *
  * @author ramon
  * 
- */
+ * /
 public class ContactosDecorator extends TableDecorator {
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.displaytag.decorator.TableDecorator#finishRow()
-	 */
+	 * /
 	@Override
 	public String finishRow() {
 		Cliente myRow = (Cliente) this.getCurrentRowObject();
@@ -56,3 +57,4 @@ public class ContactosDecorator extends TableDecorator {
 	}
 
 }
+*/

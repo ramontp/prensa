@@ -1,6 +1,7 @@
 /**
  * 
- */
+ * /
+/*
 package es.noletia.clientes.struts;
 
 import org.apache.log4j.Logger;
@@ -18,13 +19,13 @@ import org.springframework.stereotype.Component;
 /**
  * @author ramon
  * 
- */
+ * /
 @Component
 @Scope("prototype")
 public class CopiaSeguridadAction extends ComunAction {
 	/**
 	 * Logger for this class
-	 */
+	 * /
 	private static final Logger logger = Logger
 			.getLogger(CopiaSeguridadAction.class);
 
@@ -103,7 +104,7 @@ public class CopiaSeguridadAction extends ComunAction {
 
 	/**
 	 * @return the mensaje
-	 */
+	 * /
 	public String getMensaje() {
 		return mensaje;
 	}
@@ -111,9 +112,10 @@ public class CopiaSeguridadAction extends ComunAction {
 	/**
 	 * @param mensaje
 	 *            the mensaje to set
-	 */
+	 * /
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
 
 }
+*/

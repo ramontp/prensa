@@ -1,6 +1,7 @@
 /**
  * 
- */
+ * /
+/* 
 package es.noletia.clientes.struts;
 
 import java.util.Map;
@@ -13,7 +14,7 @@ import com.opensymphony.xwork2.Preparable;
 /**
  * @author ramon
  *
- */
+ * /
 public class ComunAction extends ActionSupport implements SessionAware, Preparable{
 
 	private static final long serialVersionUID = -6873299291474019298L;
@@ -32,3 +33,4 @@ public class ComunAction extends ActionSupport implements SessionAware, Preparab
 	}
 
 }
+*/

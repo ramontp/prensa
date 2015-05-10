@@ -1,6 +1,7 @@
 /**
  * 
  */
+/*
 package es.noletia.clientes.struts;
 
 import org.springframework.context.annotation.Scope;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author ramon
  *
- */
+ * /
 @Component
 @Scope("prototype")
 public class InicioAction extends ComunAction{
@@ -20,3 +21,4 @@ public class InicioAction extends ComunAction{
 		return SUCCESS;
 	}
 }
+*/
