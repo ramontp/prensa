@@ -5,10 +5,15 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <configuration>
  	<typeAliases>
-        <typeAlias type="es.noletia.clientes.modelo.Provincia" alias="provincia"/>
-        <typeAlias type="es.noletia.clientes.modelo.Cliente" alias="cliente"/>
+        <typeAlias type="es.noletia.prensa.modelo.Contacto" alias="contacto"/>
+		<typeAlias type="es.noletia.prensa.modelo.Medio" alias="medio"/>
+        <typeAlias type="es.noletia.prensa.modelo.Categoria" alias="categoria"/>
+        <typeAlias type="es.noletia.prensa.modelo.Ambito" alias="ambito"/>
+        <typeAlias type="es.noletia.prensa.modelo.Filtro" alias="filtro"/>
+	
+        <!-- <typeAlias type="es.noletia.clientes.modelo.Provincia" alias="provincia"/>
         <typeAlias type="es.noletia.clientes.modelo.Contacto" alias="contacto"/>
         <typeAlias type="es.noletia.clientes.modelo.Categoria" alias="categoria"/>
-        <typeAlias type="es.noletia.clientes.modelo.ClienteCategoria" alias="clientecategoria"/>
+        <typeAlias type="es.noletia.clientes.modelo.ClienteCategoria" alias="clientecategoria"/> -->
     </typeAliases>
 </configuration>

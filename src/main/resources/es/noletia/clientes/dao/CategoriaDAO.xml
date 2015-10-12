@@ -43,5 +43,10 @@
     <select id="getElementosFiltrados" resultType="provincia" parameterType="java.util.Map">
         select * from categorias where nombrecategoria like '%${nombrecategoria}%'
     </select>
+
+    <select id="getTipoSelect" parameterType="java.lang.Integer" resultType="categoria">
+        select * from categorias where tipo=#{tipo}
+    </select>
+    
     
 </mapper>

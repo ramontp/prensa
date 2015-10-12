@@ -3,39 +3,25 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-    
-    <definition name="esqueleto" template="/jsp/comun/esqueleto.jsp">
-		<put-attribute name="title" value="Prensa Noletia" />
-		<put-attribute name="header" value="/jsp/comun/cabecera.jsp" />
-		<put-attribute name="nav" value="/jsp/comun/navigation.jsp" />
-		<put-attribute name="footer" value="/jsp/comun/pie.jsp" />
-	</definition>
-    
-    <definition name="esqueletoAdmin" template="/jsp/privado/esqueletoAdmin.jsp">
-		<put-attribute name="title" value="Noletia Gestor Compañías Funciones Espacios" />
-		<put-attribute name="header" value="/jsp/privado/cabeceraAdmin.jsp" />
-		<put-attribute name="nav" value="/jsp/privado/navigationAdmin.jsp" />
-		<put-attribute name="footer" value="/jsp/comun/pie.jsp" />
-	</definition>
-    
-    <definition name="inicio.tiles" extends="esqueleto">
-		<put-attribute name="body" value="/jsp/inicio/contenidoInicio.jsp" />
-    </definition>
-    
-    <definition name="clientes.tiles" extends="esqueleto">
-		<put-attribute name="body" value="/jsp/clientes/clientes.jsp" />
-    </definition>
-    
-    <definition name="categorias.tiles" extends="esqueleto">
-		<put-attribute name="body" value="/jsp/categorias/categorias.jsp" />
-    </definition>
-    
-    <definition name="listados.tiles" extends="esqueleto">
-		<put-attribute name="body" value="/jsp/listados/listados.jsp" />
-    </definition>
-    
-    <definition name="seguridad.tiles" extends="esqueleto">
-		<put-attribute name="body" value="/jsp/seguridad/seguridad.jsp" />
-    </definition>
+
+<definition name="base.definition" template="mainTemplate.jsp">  
+        <put-attribute name="title" value="Contactos de Prensa"></put-attribute>  
+        <put-attribute name="header" value="/jsp/comun/header.jsp"></put-attribute>  
+        <put-attribute name="body" value=""></put-attribute>  
+        <put-attribute name="footer" value="/jsp/comun/footer.jsp"></put-attribute>  
+    </definition>  
+   
+    <definition extends="base.definition" name="contactos">  
+        <put-attribute name="body" value="/jsp/contactos/contactos.jsp"></put-attribute>  
+    </definition>  
+      
+    <definition extends="base.definition" name="medios">  
+        <put-attribute name="body" value="/jsp/medios/medios.jsp"></put-attribute>  
+    </definition>  
+          
+    <definition extends="base.definition" name="listados">  
+        <put-attribute name="body" value="/jsp/listados/listados.jsp"></put-attribute>  
+    </definition>  
+          
     
 </tiles-definitions>
