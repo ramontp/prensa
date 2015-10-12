@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="es.noletia.prensa.dao.ContactoDAO">
+    
+    <resultMap type="contacto" id="result">
+        <id property="idcontacto" column="idcontacto"/>
+        <result property="nombre" column="contacto"/>
+        <result property="email" column="email"/>
+        <result property="email2" column="email2"/>
+        <result property="telefono" column="telefono"/>
+        <association property="medio" column="idmedio" javaType="medio">
+            <id property="idmedio" column="idmedio"/>
+            <result property="nombre" column="nombre"/>
+        </association>
+    </resultMap>
+
+    <sql id="camposcontacto">
+        con.idcontacto, con.contacto, con.departamento, 
+        con.email, con.email2, con.telefono, con.idmedio,
+    </sql>
+    
+    <sql id="camposmedio">
+        med.idmedio, med.nombre
+    </sql>
+    
+    
+    <sql id="todoscampos">
+        <include refid="camposcontacto"/>
+        <include refid="camposmedio"/>
+    </sql>
+    
+    <sql id="from">
+        contactos con left outer join medios med on con.idmedio=med.idmedio
+    </sql>
+    
+    <sql id="join">
+        med.idmedio=con.idmedio
+    </sql>
+            
+    <select id="getElementosFiltrados" resultMap="result" parameterType="contacto">
+    	select <include refid="todoscampos"/> 
+        from <include refid="from"/>
+        <where>
+            <if test="medio != null">	            
+            	AND med.idmedio = #{medio.idmedio} 
+            </if>
+            <if test="nombre != null">
+            	AND UPPER(contacto) like UPPER('%${nombre}%') 
+            </if>
+            <if test="telefono != null">
+            	AND telefono like '%${telefono}%' 
+            </if>
+            <if test="email != null">
+            	AND (UPPER(email) like UPPER('%${email}%')
+            		OR
+            		UPPER(email2) like UPPER('%${email}%')) 
+            </if>
+        </where>
+    </select>
+    
+    <insert id="alta" parameterType="contacto" useGeneratedKeys="true" keyProperty="idcontacto">
+        insert into contactos(contacto,email,email2,telefono,idmedio) 
+        values (#{nombre},#{email},#{email2},#{telefono},#{medio.idmedio})
+    </insert>
+    
+    <delete id="borraPorId" parameterType="java.lang.Long">
+        delete from contactos where idcontacto=#{id}
+    </delete>
+    
+    <delete id="borra" parameterType="contacto">
+        delete from contactos where idcontacto=#{idcontacto}
+    </delete>
+    
+    <update id="actualiza" parameterType="contacto">
+        update contactos
+        <set>
+            contacto = #{nombre},
+            email = #{email},
+            email2 = #{email2},
+            telefono = #{telefono},
+            idmedio = #{medio.idmedio},
+        </set>
+        where idcontacto = #{idcontacto}
+    </update>
+    
+    <select id="getContactosListado" parameterType="filtro" resultMap="result">
+     	select con.*
+        from contactos con left outer join medios med on con.idmedio=med.idmedio
+        left outer join categorias cat1 on med.idcat1=cat1.idcategoria
+        left outer join categorias cat2 on med.idcat2=cat2.idcategoria
+        left outer join ambitos amb on med.idambito=amb.idambito
+        <where>
+        	<if test="medio != null">
+        		AND med.idmedio = #{medio.idmedio}
+        	</if>
+        	<if test="categoria1 != null">
+        		AND cat1.idcategoria = #{categoria1.idcategoria}
+        	</if>
+        	<if test="categoria2 != null">
+        		AND cat2.idcategoria = #{categoria2.idcategoria}
+        	</if>
+        	<if test="ambito != null">
+        		AND amb.idambito = #{ambito.idambito}
+        	</if>
+    	</where>
+    </select>
+    
+</mapper>
