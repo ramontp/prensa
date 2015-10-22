@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+<script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/angularctrls/medios.js"></script>
 
 <script type="text/javascript">
@@ -12,9 +13,9 @@
 
 <div ng-controller="MediosCtrl">
 
-	<ul class="nav nav-tabs">
+	<!-- <ul class="nav nav-tabs">
 		<li role="presentation"><a href="#">Medios disponibles</a></li>
-	</ul>
+	</ul> -->
 
 	<div id="contenido">
 		<div id="capa1" class="capaContenido">
@@ -78,7 +79,7 @@
 							<th>Medio</th>
 							<th>Tipo 1</th>
 							<th>Tipo 2</th>
-							<th>Ambito</th>
+							<th>Ámbito</th>
 							<th width="50px;"><a
 							class="fa fa-plus fa-fw enlace"
 							ng-click="formGuardaMedio(null)"></a></th>

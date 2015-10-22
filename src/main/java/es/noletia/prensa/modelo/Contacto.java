@@ -15,6 +15,13 @@ public class Contacto implements Serializable{
 	private Long idcontacto;
 	private String contacto;
 	private String nombre;
+	private String observaciones;
+	private String email;
+	private String email2;
+	private String telefono;
+	private Medio medio;
+	private Integer destacado;
+	
 	/**
 	 * @return the nombre
 	 */
@@ -27,12 +34,6 @@ public class Contacto implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	private String departamento;
-	private String email;
-	private String email2;
-	private String telefono;
-	private Medio medio;
-	
 	/**
 	 * @return the idcontacto
 	 */
@@ -96,19 +97,31 @@ public class Contacto implements Serializable{
 	/**
 	 * @return the departamento
 	 */
-	public String getDepartamento() {
-		return departamento;
+	public String getObservaciones() {
+		return observaciones;
 	}
 	/**
 	 * @param departamento the departamento to set
 	 */
-	public void setDepartamento(String departamento) {
-		this.departamento = departamento;
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
 	}
 	public String getEmail2() {
 		return email2;
 	}
 	public void setEmail2(String email2) {
 		this.email2 = email2;
+	}
+	/**
+	 * @return the destacado
+	 */
+	public Integer getDestacado() {
+		return destacado;
+	}
+	/**
+	 * @param destacado the destacado to set
+	 */
+	public void setDestacado(Integer destacado) {
+		this.destacado = destacado;
 	}
 }

@@ -16,4 +16,5 @@ import es.noletia.prensa.modelo.Filtro;
 public interface ContactosService extends CRUDDAO<Contacto>{
 
 	public List<Contacto> getContactosListado(Filtro filtro);
+	public void setDestacado(Contacto contacto);
 }

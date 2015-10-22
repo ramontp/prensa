@@ -50,4 +50,9 @@ public class ContactosController {
 	public @ResponseBody void borraContacto(@RequestBody Contacto contacto){
 		contactoService.borra(contacto);
 	}
+
+	@RequestMapping(value="/contactos/setDestacado", method=RequestMethod.POST)
+	public @ResponseBody void setDestacado(@RequestBody Contacto contacto){
+		contactoService.setDestacado(contacto);
+	}
 }

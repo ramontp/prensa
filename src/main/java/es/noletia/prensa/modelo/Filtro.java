@@ -16,6 +16,7 @@ public class Filtro implements Serializable{
 	private Categoria categoria1;
 	private Categoria categoria2;
 	private Ambito ambito;
+	private Integer destacado;
 	
 	
 	/**
@@ -65,6 +66,18 @@ public class Filtro implements Serializable{
 	 */
 	public void setAmbito(Ambito ambito) {
 		this.ambito = ambito;
+	}
+	/**
+	 * @return the destacado
+	 */
+	public Integer getDestacado() {
+		return destacado;
+	}
+	/**
+	 * @param destacado the destacado to set
+	 */
+	public void setDestacado(Integer destacado) {
+		this.destacado = destacado;
 	}
 
 }

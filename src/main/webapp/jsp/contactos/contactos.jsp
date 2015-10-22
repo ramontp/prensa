@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+<script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/angularctrls/contactos.js"></script>
+
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -10,11 +12,29 @@
 	});
 </script>
 
-<div ng-controller="ContactosCtrl">
+<script type="text/ng-template" id="customPopupTemplate.html">
+  <div class="custom-popup-wrapper"
+     ng-style="{top: position().top+'px', left: position().left+'px'}"
+     style="display: block;"
+     ng-show="isOpen() && !moveInProgress"
+     aria-hidden="{{!isOpen()}}">
 
-	<ul class="nav nav-tabs">
+    <ul class="dropdown-menu" role="listbox">
+        <li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+            ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+            <div uib-typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></div>
+        </li>
+    </ul>
+  </div>
+</script>
+
+<div class="loading-spiner-holder modal" loading ><div class="loading-spiner"></div></div>
+
+<div class="container-fluid typeahead-demo" ng-controller="ContactosCtrl">
+
+	<!-- <ul class="nav nav-tabs">
 		<li role="presentation"><a href="#">Búsqueda contactos</a></li>
-	</ul>
+	</ul> -->
 
 	<div id="contenido">
 		<div id="capa1" class="capaContenido">
@@ -27,29 +47,33 @@
 						<input type="text" id="nombre" ng-model="contacto.nombre"
 							placeholder="Nombre" class="form-control col-xs-12">
 					</div>
-					<div class="col-xs-1">
+					<!-- <div class="col-xs-1">
 						<label for="telefono">Teléfono:</label>
 					</div>
 					<div class="col-xs-2">
 						<input type="text" id="telefono" ng-model="contacto.telefono"
 							placeholder="Teléfono" class="form-control col-xs-12">
-					</div>
+					</div> -->
 					<div class="col-xs-1">
 						<label for="email">Email:</label>
 					</div>
-					<div class="col-xs-2">
+					<div class="col-xs-3">
 						<input type="text" id="email" ng-model="contacto.email"
 							placeholder="Email" class="form-control col-xs-12">
 					</div>
 					<div class="col-xs-1">
 						<label for="medio">Medio:</label>
 					</div>
-					<div class="col-xs-2">
-						<select ng-model="contacto.medio"
-							ng-options="medio.nombre for medio in medios"
-							class="form-control col-xs-12">
-							<option value="">--Seleccione--</option>
-						</select>
+					<div class="col-xs-3">						
+						<input type="text" ng-model="contacto.medio" 
+							placeholder="Medio" 
+							uib-typeahead="medio.nombre for medio in medios | filter:$viewValue | limitTo: 8" 
+							typeahead-popup-template-url="customPopupTemplate.html"
+							typeahead-on-select="setMedioBuscar($item)" 
+							class="form-control">
+					</div>
+					<div class="col-xs-1">
+						<div id="ico_fav" ng-class="contacto.destacado ? 'destacado' : ((contacto.destacado == undefined)?'desactivado':'normal')" ng-click="setFiltroDestacado()" title="Filtrar contactos destacados"></div>
 					</div>
 				</div>
 				<div class="" style="text-align: right; padding-top: 10px;">
@@ -63,19 +87,20 @@
 				hay resultados</div>
 			<div class="panel panel-default" ng-show="contactos.length !== 0">
 				<!-- Default panel contents -->
-				<div class="panel-heading">Listado de Contactos</div>
+				<div class="panel-heading">Listado de Contactos <span id="numContacts"></span></div>
 
 				<!-- Table -->
 				<table class="table">
 					<thead>
 						<tr>
+							<th></th>
 							<th>Nombre</th>
 							<th>Teléfono</th>
 							<th>Email</th>
 							<th>Medio</th>
 							<th width="50px;"><a
 							class="fa fa-plus fa-fw enlace"
-							ng-click="formGuardaContacto(null)" title="alta">alta</a></th>
+							ng-click="formGuardaContacto(null)"></a></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -88,6 +113,14 @@
 										</div>
 										<div class="col-xs-8">
 											<input type="text" name="nombre" ng-model="contactoEdicion.nombre">
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-4">
+											<label for="observaciones">Observaciones:</label>
+										</div>
+										<div class="col-xs-8">
+											<textarea rows="5" cols="50" ng-model="contactoEdicion.observaciones"></textarea>
 										</div>
 									</div>
 									<div class="row" ng-class="{ errorFormulario: formAltaContacto.telefono.$invalid }">
@@ -124,6 +157,16 @@
 												class="form-control"></select>
 										</div>
 									</div>
+									<div class="row">
+										<div class="col-xs-4">
+											<label for="telefono">Destacado:</label>
+										</div>
+										<div class="col-xs-8">
+											<input type="checkbox" ng-model="contactoEdicion.destacado"
+											ng-true-value="1"
+											ng-false-value="0">
+										</div>
+									</div>
 									<div class="">
 										<button type="button" ng-click="cancelarGuardar();"
 											class="btn btn-default">Cancelar</button>
@@ -134,15 +177,18 @@
 							</td>
 						</tr>
 						<tr ng-repeat="contact in contactos">
+							<td><div id="ico_fav" ng-class="contact.destacado ? 'destacado' : 'normal'" ng-click="setDestacado(contact)"></div></td>
 							<td>{{contact.nombre}}</td>
 							<td>{{contact.telefono}}</td>
 							<td>{{contact.email}} <span ng-show="contact.email2.length > 0"> / {{contact.email2}}</span></td>
 							<td>{{contact.medio.nombre}}</td>
-							<td style="width: 60px;"><a
+							<td id="contacto_{{contact.idcontacto}}" style="width: 80px;"><a
 								class="fa fa-pencil fa-fw enlace"
 								ng-click="formGuardaContacto(contact)"></a> <a
 								class="fa fa-trash-o fa-fw enlace"
-								ng-click="borraContacto(contact)"></a></td>
+								ng-click="borraContacto(contact)"></a> <a
+								class="fa fa-file-text-o fa-fw enlace"
+								ng-click="addObservaciones(contact)" ng-show="contact.observaciones"></a></td>
 						</tr>
 					</tbody>
 				</table>

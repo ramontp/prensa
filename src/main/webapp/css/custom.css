@@ -273,9 +273,9 @@ div.masinfo img {
 }
 
 .capaContenido{
-	border-left:1px solid #DDDDDD;
-	border-bottom:1px solid #DDDDDD;
-	border-right:1px solid #DDDDDD;
+	border:1px solid #DDDDDD;
+	/*border-bottom:1px solid #DDDDDD;
+	border-right:1px solid #DDDDDD;*/
 	
 	padding:10px 8px 8px 4px;
 }
@@ -311,7 +311,7 @@ div.masinfo img {
 
 .capaContenido label{
 	font-size: 12px;
-	padding-top: 10px;
+	padding-top: 5px;
 }
 
 /* posicionamiento de los mensajes */
@@ -320,4 +320,110 @@ div.masinfo img {
     position: absolute;
     top: 20px;
     width: 879px;
+}
+
+
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+
+.observaciones{
+	background-color: #EDEDED;
+	padding-left: 20px!important;
+}
+
+.navbar {
+  min-height: 5px!important;
+}
+
+.navbar-nav > li > a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.form-control{
+	height: 25px;
+	padding: 3px 3px!important;
+}
+
+.btn {
+	padding: 3px 6px!important;
+	font-size: 12px!important;
+}
+
+
+  .typeahead-demo .custom-popup-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    background-color: #f9f9f9;
+  }
+
+  .typeahead-demo .custom-popup-wrapper > .message {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    color: #868686;
+  }
+
+  .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+    position: static;
+    float: none;
+    display: block;
+    min-width: 160px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 12px!important;
+  }
+  
+.typeahead-demo .custom-popup-wrapper .dropdown-menu li > a{
+	padding: 3px 4px!important;
+}
+
+.panel-heading{
+	font-size: 12px;
+}
+
+#ico_fav{
+	height: 19px;
+	width: 19px;
+	cursor: pointer;
+}
+
+.normal{
+	background-image: url(../img/gris.gif);
+}
+
+.destacado{
+	background-image: url(../img/amarilla.gif);
+}
+
+.desactivado{
+	background-image: url(../img/gris.gif);
+	opacity: 0.4;
 }

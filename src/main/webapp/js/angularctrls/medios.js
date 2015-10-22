@@ -2,7 +2,7 @@
  * 
  */
 
-contactosApp.controller('MediosCtrl', function($scope, $http, ngDialog){
+contactosApp.controller('MediosCtrl', function($scope, $http){
 
 	$http.get("/prensa/medios/getTipos1Select")
 	.success(function(response){

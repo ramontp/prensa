@@ -7,9 +7,11 @@
     <resultMap type="contacto" id="result">
         <id property="idcontacto" column="idcontacto"/>
         <result property="nombre" column="contacto"/>
+        <result property="observaciones" column="observaciones"/>
         <result property="email" column="email"/>
         <result property="email2" column="email2"/>
         <result property="telefono" column="telefono"/>
+        <result property="destacado" column="destacado"/>
         <association property="medio" column="idmedio" javaType="medio">
             <id property="idmedio" column="idmedio"/>
             <result property="nombre" column="nombre"/>
@@ -17,8 +19,8 @@
     </resultMap>
 
     <sql id="camposcontacto">
-        con.idcontacto, con.contacto, con.departamento, 
-        con.email, con.email2, con.telefono, con.idmedio,
+        con.idcontacto, con.contacto, con.observaciones, 
+        con.email, con.email2, con.telefono, con.idmedio, con.destacado,
     </sql>
     
     <sql id="camposmedio">
@@ -57,12 +59,15 @@
             		OR
             		UPPER(email2) like UPPER('%${email}%')) 
             </if>
+            <if test="destacado != null">
+            	AND destacado = ${destacado} 
+            </if>
         </where>
     </select>
     
     <insert id="alta" parameterType="contacto" useGeneratedKeys="true" keyProperty="idcontacto">
-        insert into contactos(contacto,email,email2,telefono,idmedio) 
-        values (#{nombre},#{email},#{email2},#{telefono},#{medio.idmedio})
+        insert into contactos(contacto,observaciones,email,email2,telefono,idmedio) 
+        values (#{nombre},#{observaciones},#{email},#{email2},#{telefono},#{medio.idmedio})
     </insert>
     
     <delete id="borraPorId" parameterType="java.lang.Long">
@@ -77,10 +82,12 @@
         update contactos
         <set>
             contacto = #{nombre},
+            observaciones = #{observaciones},
             email = #{email},
             email2 = #{email2},
             telefono = #{telefono},
             idmedio = #{medio.idmedio},
+            destacado = #{destacado}
         </set>
         where idcontacto = #{idcontacto}
     </update>
@@ -104,7 +111,13 @@
         	<if test="ambito != null">
         		AND amb.idambito = #{ambito.idambito}
         	</if>
+            <if test="destacado != null">
+            	AND destacado = ${destacado} 
+            </if>
     	</where>
     </select>
     
+    <update id="setDestacado" parameterType="contacto">
+    	update contactos set destacado=#{destacado} where idcontacto=#{idcontacto}
+    </update>
 </mapper>

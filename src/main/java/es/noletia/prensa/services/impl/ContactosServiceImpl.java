@@ -66,6 +66,10 @@ public class ContactosServiceImpl implements ContactosService {
 	public List<Contacto> getContactosListado(Filtro filtro) {
 		return contactoDAO.getContactosListado(filtro);
 	}
+	@Override
+	public void setDestacado(Contacto contacto) {
+		contactoDAO.setDestacado(contacto);
+	}
 
 
 }
