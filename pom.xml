@@ -9,7 +9,8 @@
 	<url>http://www.noletia.com</url>
 
 	<properties>
-		<spring.version>4.1.6.RELEASE</spring.version>
+		<spring.version>4.0.2.RELEASE</spring.version>
+		<spring_security.version>4.0.2.RELEASE</spring_security.version>
 		<tiles-version>3.0.5</tiles-version>
 		<jackson.version>2.5.3</jackson.version>
 	</properties>
@@ -50,6 +51,16 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring_security.version}</version>
+		</dependency>
+		<dependency>
+	        <groupId>org.springframework.security</groupId>
+	        <artifactId>spring-security-config</artifactId>
+	        <version>${spring_security.version}</version>
+	    </dependency>
 
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
@@ -61,7 +72,6 @@
 			<artifactId>tiles-extras</artifactId>
 			<version>${tiles-version}</version>
 		</dependency>
-
 
 		<dependency>
 			<groupId>c3p0</groupId>
