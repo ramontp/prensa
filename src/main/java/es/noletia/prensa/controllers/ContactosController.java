@@ -25,6 +25,11 @@ public class ContactosController {
 
 	@Autowired
 	private ContactosService contactoService;
+        
+        @RequestMapping(value="/", method= RequestMethod.GET)
+        public String inicioAplicacion(){
+            return "redirect:contactos";
+        }
 	
 	@RequestMapping(value="/contactos", method= RequestMethod.GET)
 	public ModelAndView inicio(){
