@@ -60,4 +60,9 @@ public class ContactosController {
 	public @ResponseBody void setDestacado(@RequestBody Contacto contacto){
 		contactoService.setDestacado(contacto);
 	}
+
+	@RequestMapping(value="/contactos/setFotografo", method=RequestMethod.POST)
+	public @ResponseBody void setFotografo(@RequestBody Contacto contacto){
+		contactoService.setFotografo(contacto);
+	}
 }

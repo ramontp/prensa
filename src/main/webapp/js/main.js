@@ -2,4 +2,4 @@
  * 
  */
 
-var contactosApp = angular.module('contactosApp', []);
+var contactosApp = angular.module('contactosApp', ['ngAnimate', 'ui.bootstrap']);

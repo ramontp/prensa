@@ -17,4 +17,6 @@ public interface ContactoDAO extends CRUDDAO<Contacto> {
 	public void borraContactosPorCliente(Long idcliente);
 	public List<Contacto> getContactosListado(Filtro filtro);
 	public void setDestacado(Contacto contacto);
+
+    public void setFotografo(Contacto contacto);
 }

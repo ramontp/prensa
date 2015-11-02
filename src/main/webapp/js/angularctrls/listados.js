@@ -32,6 +32,7 @@ contactosApp.controller('ListadosCtrl', function($scope, $http, Excel, $timeout)
 		$scope.filtro.categoria2 = null;
 		$scope.filtro.ambito = null;
 		$scope.filtro.destacado = null;
+		$scope.filtro.fotografo = null;
 		$("#listadoTextarea").html('');
 		$("#numElementos").html('');
 	};
@@ -44,7 +45,6 @@ contactosApp.controller('ListadosCtrl', function($scope, $http, Excel, $timeout)
 			var listado="";
 			var contador = 0;
 			angular.forEach($scope.contactos, function(value, key){
-				//console.log(value.email+'_'+key);
 				if (value.email){
 					listado += value.email.toLowerCase() + ', ';
 					contador++;
@@ -56,7 +56,7 @@ contactosApp.controller('ListadosCtrl', function($scope, $http, Excel, $timeout)
 					addToTable(value.email2);
 				}
 			});
-			if (contador == 1){
+			if (contador === 1){
 				$("#numElementos").html("Se ha encontrado un email");				
 			} else {
 				$("#numElementos").html("Se han encontrado "+contador+" emails");
@@ -82,6 +82,19 @@ contactosApp.controller('ListadosCtrl', function($scope, $http, Excel, $timeout)
 			break;
 		default:
 			$scope.filtro.destacado=0;
+		}
+	};
+
+	$scope.setFiltroFotografo = function(){
+		switch($scope.filtro.fotografo){
+		case 0:
+			$scope.filtro.fotografo=1;
+			break;
+		case 1:
+			$scope.filtro.fotografo=null;
+			break;
+		default:
+			$scope.filtro.fotografo=0;
 		}
 	};
 	
