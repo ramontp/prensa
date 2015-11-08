@@ -4,6 +4,8 @@
 
 <mapper namespace="es.noletia.prensa.dao.ContactoDAO">
     
+    <cache />
+    
     <resultMap type="contacto" id="result">
         <id property="idcontacto" column="idcontacto"/>
         <result property="nombre" column="contacto"/>

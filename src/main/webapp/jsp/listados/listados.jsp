@@ -26,6 +26,8 @@
     </div>
 </script>
 
+<div class="loading-spiner-holder modal" loading ><div class="loading-spiner"></div></div>
+
 <div class="container-fluid typeahead-demo" ng-controller="ListadosCtrl">
 
     <!-- <ul class="nav nav-tabs">

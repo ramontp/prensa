@@ -4,85 +4,87 @@
 
 <mapper namespace="es.noletia.prensa.dao.MedioDAO">
 
-	<resultMap type="medio" id="result">
-		<id property="idmedio" column="idmedio" />
-		<result property="nombre" column="nombre" />
-		<association property="ambito" column="idambito" javaType="ambito">
+    <cache/>
+    
+    <resultMap type="medio" id="result">
+        <id property="idmedio" column="idmedio" />
+        <result property="nombre" column="nombre" />
+        <association property="ambito" column="idambito" javaType="ambito">
             <id property="idambito" column="idambito"/>
             <result property="nombre" column="nombreambito"/>
             <result property="agrupacion" column="agrupacion"/>
         </association>
         <association property="categoria1" column="idcat1" javaType="categoria">
-        	<id property="idcategoria" column="idcategoria1"/>
-        	<result property="nombrecategoria" column="nombrecategoria1"/>
+            <id property="idcategoria" column="idcategoria1"/>
+            <result property="nombrecategoria" column="nombrecategoria1"/>
         </association>
         <association property="categoria2" column="idcat2" javaType="categoria">
-        	<id property="idcategoria" column="idcategoria2"/>
-        	<result property="nombrecategoria" column="nombrecategoria2"/>
+            <id property="idcategoria" column="idcategoria2"/>
+            <result property="nombrecategoria" column="nombrecategoria2"/>
         </association>
-	</resultMap>
+    </resultMap>
 
-	<sql id="camposmedio">
-		med.idmedio, med.nombre, med.idambito, med.idcat1, med.idcat2
-	</sql>
+    <sql id="camposmedio">
+        med.idmedio, med.nombre, med.idambito, med.idcat1, med.idcat2
+    </sql>
 	
-	<sql id="camposambito">
-		amb.idambito, amb.nombre as nombreambito, amb.agrupacion
-	</sql>
+    <sql id="camposambito">
+        amb.idambito, amb.nombre as nombreambito, amb.agrupacion
+    </sql>
 	
-	<sql id="camposcategorias">
-		cat.idcategoria as idcategoria1, cat.nombrecategoria as nombrecategoria1,
-	    cat2.idcategoria as idcategoria2, cat2.nombrecategoria as nombrecategoria2
-	</sql>
+    <sql id="camposcategorias">
+        cat.idcategoria as idcategoria1, cat.nombrecategoria as nombrecategoria1,
+        cat2.idcategoria as idcategoria2, cat2.nombrecategoria as nombrecategoria2
+    </sql>
 	
-	<sql id="join">
+    <sql id="join">
         med.idambito=amb.idambito
         and med.idcat1=cat.idcategoria
     </sql>
 
-	<select id="getMediosSelect" resultMap="result">
-		select
-		<include refid="camposmedio" />
-		from cliente as med
+    <select id="getMediosSelect" resultMap="result">
+        select
+        <include refid="camposmedio" />
+        from cliente as med
 
-	</select>
-	<!-- <where> <include refid="join"/> <if test="nombre != null"> AND UPPER(contacto) 
-		like UPPER('%${nombre}%') </if> <if test="telefono != null"> AND telefono 
-		like '%${telefono}%' </if> <if test="email != null"> AND UPPER(email) like 
-		UPPER('%${email}%') </if> </where> -->
+    </select>
+    <!-- <where> <include refid="join"/> <if test="nombre != null"> AND UPPER(contacto) 
+    like UPPER('%${nombre}%') </if> <if test="telefono != null"> AND telefono 
+    like '%${telefono}%' </if> <if test="email != null"> AND UPPER(email) like 
+    UPPER('%${email}%') </if> </where> -->
 
-	<select id="getListaElementos" resultMap="result">
-		select
-		<include refid="camposmedio" />, <include refid="camposambito" />, <include refid="camposcategorias"></include>
-		from medios as med LEFT JOIN ambitos as amb ON med.idambito=amb.idambito
-					LEFT JOIN categorias as cat ON med.idcat1=cat.idcategoria
-					LEFT JOIN categorias as cat2 ON med.idcat2=cat2.idcategoria
-		order by med.nombre					
-	</select>
+    <select id="getListaElementos" resultMap="result">
+        select
+        <include refid="camposmedio" />, <include refid="camposambito" />, <include refid="camposcategorias"></include>
+        from medios as med LEFT JOIN ambitos as amb ON med.idambito=amb.idambito
+        LEFT JOIN categorias as cat ON med.idcat1=cat.idcategoria
+        LEFT JOIN categorias as cat2 ON med.idcat2=cat2.idcategoria
+        order by med.nombre					
+    </select>
 	
-	<select id="getElementosFiltrados" parameterType="medio"
-		resultMap="result">
-		select
-		<include refid="camposmedio" />, <include refid="camposambito" />, <include refid="camposcategorias"></include>
-		from medios as med LEFT JOIN ambitos as amb ON med.idambito=amb.idambito
-					LEFT JOIN categorias as cat ON med.idcat1=cat.idcategoria
-					LEFT JOIN categorias as cat2 ON med.idcat2=cat2.idcategoria
-		<where>
-			<if test="nombre != null">
-				AND UPPER(med.nombre) like UPPER('%${nombre}%')
-			</if>
-			<if test="ambito != null">
-				AND med.idambito = ${ambito.idambito}
-			</if>
-			<if test="categoria1 != null">
-				AND med.idcat1 = ${categoria1.idcategoria}
-			</if>
-			<if test="categoria2 != null">
-				AND med.idcat2 = ${categoria2.idcategoria}
-			</if>
-		</where>
-		order by med.nombre
-	</select>
+    <select id="getElementosFiltrados" parameterType="medio"
+                resultMap="result">
+        select
+        <include refid="camposmedio" />, <include refid="camposambito" />, <include refid="camposcategorias"></include>
+        from medios as med LEFT JOIN ambitos as amb ON med.idambito=amb.idambito
+        LEFT JOIN categorias as cat ON med.idcat1=cat.idcategoria
+        LEFT JOIN categorias as cat2 ON med.idcat2=cat2.idcategoria
+        <where>
+            <if test="nombre != null">
+                AND UPPER(med.nombre) like UPPER('%${nombre}%')
+            </if>
+            <if test="ambito != null">
+                AND med.idambito = ${ambito.idambito}
+            </if>
+            <if test="categoria1 != null">
+                AND med.idcat1 = ${categoria1.idcategoria}
+            </if>
+            <if test="categoria2 != null">
+                AND med.idcat2 = ${categoria2.idcategoria}
+            </if>
+        </where>
+        order by med.nombre
+    </select>
 
     <insert id="alta" parameterType="medio" useGeneratedKeys="true" keyProperty="idmedio">
         insert into medios(nombre,idambito,idcat1,idcat2) 
@@ -90,18 +92,18 @@
     </insert>
     
     <delete id="borra" parameterType="medio">
-    	delete from medios where idmedio=#{idmedio}
+        delete from medios where idmedio=#{idmedio}
     </delete>
     
     <update id="actualiza" parameterType="medio">
-    	update medios
-    	<set>
-   			nombre = #{nombre},
-   			idcat1 = #{categoria1.idcategoria},
-   			idcat2 = #{categoria2.idcategoria},
-   			idambito = #{ambito.idambito},
-    	</set>
-    	where idmedio = #{idmedio}
+        update medios
+        <set>
+            nombre = #{nombre},
+            idcat1 = #{categoria1.idcategoria},
+            idcat2 = #{categoria2.idcategoria},
+            idambito = #{ambito.idambito},
+        </set>
+        where idmedio = #{idmedio}
     </update>
 
 </mapper>
