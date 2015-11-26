@@ -413,6 +413,14 @@ body.loading .modal {
 	height: 19px;
 	width: 19px;
 	cursor: pointer;
+        float: left;
+        margin-right: 3px;
+}
+
+#ico_camera{
+    font-size: 18px; 
+    margin-top: 2px;
+    cursor: pointer;
 }
 
 .normal{
@@ -423,7 +431,11 @@ body.loading .modal {
 	background-image: url(../img/amarilla.gif);
 }
 
-.desactivado{
-	background-image: url(../img/gris.gif);
-	opacity: 0.4;
+
+.semi-transparente{
+    opacity: 0.4;
+}
+
+.casi-transparente{
+    opacity: 0.2;
 }

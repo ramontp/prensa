@@ -17,7 +17,8 @@ public class Filtro implements Serializable{
 	private Categoria categoria2;
 	private Ambito ambito;
 	private Integer destacado;
-	
+        private Integer fotografo;
+
 	
 	/**
 	 * @return the medio
@@ -80,4 +81,12 @@ public class Filtro implements Serializable{
 		this.destacado = destacado;
 	}
 
+    public Integer getFotografo() {
+        return fotografo;
+    }
+
+    public void setFotografo(Integer fotografo) {
+        this.fotografo = fotografo;
+    }
+	
 }

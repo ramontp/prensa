@@ -4,6 +4,8 @@
 
 <mapper namespace="es.noletia.prensa.dao.ContactoDAO">
     
+    <cache />
+    
     <resultMap type="contacto" id="result">
         <id property="idcontacto" column="idcontacto"/>
         <result property="nombre" column="contacto"/>
@@ -12,6 +14,7 @@
         <result property="email2" column="email2"/>
         <result property="telefono" column="telefono"/>
         <result property="destacado" column="destacado"/>
+        <result property="fotografo" column="fotografo"/>
         <association property="medio" column="idmedio" javaType="medio">
             <id property="idmedio" column="idmedio"/>
             <result property="nombre" column="nombre"/>
@@ -20,7 +23,8 @@
 
     <sql id="camposcontacto">
         con.idcontacto, con.contacto, con.observaciones, 
-        con.email, con.email2, con.telefono, con.idmedio, con.destacado,
+        con.email, con.email2, con.telefono, con.idmedio, con.destacado, 
+        con.fotografo,
     </sql>
     
     <sql id="camposmedio">
@@ -62,12 +66,15 @@
             <if test="destacado != null">
             	AND destacado = ${destacado} 
             </if>
+            <if test="fotografo != null">
+            	AND fotografo = ${fotografo} 
+            </if>
         </where>
     </select>
     
     <insert id="alta" parameterType="contacto" useGeneratedKeys="true" keyProperty="idcontacto">
-        insert into contactos(contacto,observaciones,email,email2,telefono,idmedio) 
-        values (#{nombre},#{observaciones},#{email},#{email2},#{telefono},#{medio.idmedio})
+        insert into contactos(contacto,observaciones,email,email2,telefono,idmedio,destacado,fotografo) 
+        values (#{nombre},#{observaciones},#{email},#{email2},#{telefono},#{medio.idmedio},#{destacado},#{fotografo})
     </insert>
     
     <delete id="borraPorId" parameterType="java.lang.Long">
@@ -87,7 +94,8 @@
             email2 = #{email2},
             telefono = #{telefono},
             idmedio = #{medio.idmedio},
-            destacado = #{destacado}
+            destacado = #{destacado},
+            fotografo = #{fotografo}
         </set>
         where idcontacto = #{idcontacto}
     </update>
@@ -114,10 +122,17 @@
             <if test="destacado != null">
             	AND destacado = ${destacado} 
             </if>
+            <if test="fotografo != null">
+            	AND fotografo = ${fotografo} 
+            </if>
     	</where>
     </select>
     
     <update id="setDestacado" parameterType="contacto">
     	update contactos set destacado=#{destacado} where idcontacto=#{idcontacto}
+    </update>
+
+    <update id="setFotografo" parameterType="contacto">
+    	update contactos set fotografo=#{fotografo} where idcontacto=#{idcontacto}
     </update>
 </mapper>

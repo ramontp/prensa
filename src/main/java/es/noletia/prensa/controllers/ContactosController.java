@@ -25,6 +25,11 @@ public class ContactosController {
 
 	@Autowired
 	private ContactosService contactoService;
+        
+        @RequestMapping(value="/", method= RequestMethod.GET)
+        public String inicioAplicacion(){
+            return "redirect:contactos";
+        }
 	
 	@RequestMapping(value="/contactos", method= RequestMethod.GET)
 	public ModelAndView inicio(){
@@ -54,5 +59,10 @@ public class ContactosController {
 	@RequestMapping(value="/contactos/setDestacado", method=RequestMethod.POST)
 	public @ResponseBody void setDestacado(@RequestBody Contacto contacto){
 		contactoService.setDestacado(contacto);
+	}
+
+	@RequestMapping(value="/contactos/setFotografo", method=RequestMethod.POST)
+	public @ResponseBody void setFotografo(@RequestBody Contacto contacto){
+		contactoService.setFotografo(contacto);
 	}
 }

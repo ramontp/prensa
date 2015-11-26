@@ -64,8 +64,8 @@
 </head>
 <body>
 
-	<div class="col-md-2"></div>
-	<div class="col-md-8 background">
+	<div class="col-md-1"></div>
+	<div class="col-md-10 background">
 		<tiles:insertAttribute name="header"></tiles:insertAttribute>
 		<div class="alert alert-success oculto avisos" role="alert">...</div>
 		<div class="alert alert-info oculto avisos" role="alert">...</div>
@@ -74,7 +74,7 @@
 		<tiles:insertAttribute name="body"></tiles:insertAttribute>
 		<tiles:insertAttribute name="footer"></tiles:insertAttribute>
 	</div>
-	<div class="col-md-2"></div>
+	<div class="col-md-1"></div>
 	
 	
 </body>

@@ -11,6 +11,8 @@
 	});
 </script>
 
+<div class="loading-spiner-holder modal" loading ><div class="loading-spiner"></div></div>
+
 <div ng-controller="MediosCtrl">
 
 	<!-- <ul class="nav nav-tabs">
