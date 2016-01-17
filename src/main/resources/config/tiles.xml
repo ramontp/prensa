@@ -4,13 +4,19 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
 
-<definition name="base.definition" template="mainTemplate.jsp">  
+    <definition name="base.definition" template="mainTemplate.jsp">  
         <put-attribute name="title" value="Contactos de Prensa"></put-attribute>  
         <put-attribute name="header" value="/jsp/comun/header.jsp"></put-attribute>  
         <put-attribute name="body" value=""></put-attribute>  
         <put-attribute name="footer" value="/jsp/comun/footer.jsp"></put-attribute>  
     </definition>  
    
+    <definition name="login" template="/jsp/login/loginTemplate.jsp">  
+        <put-attribute name="title" value="Contactos de Prensa"></put-attribute>  
+        <put-attribute name="body" value="/jsp/login/login.jsp"></put-attribute>  
+        <put-attribute name="footer" value="/jsp/comun/footer.jsp"></put-attribute>  
+    </definition>  
+      
     <definition extends="base.definition" name="contactos">  
         <put-attribute name="body" value="/jsp/contactos/contactos.jsp"></put-attribute>  
     </definition>  
